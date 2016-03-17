@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  username: MyString
+  email: MyString
+  timezone: MyString
+  plan: MyString
+  logged_time_public: MyString
+  languages_used_public: MyString
+  email_public: MyString
+  photo_public: MyString
+  created_at: MyString
+  modified_at: MyString
+  version: MyString
+
+two:
+  id: MyString
+  username: MyString
+  email: MyString
+  timezone: MyString
+  plan: MyString
+  logged_time_public: MyString
+  languages_used_public: MyString
+  email_public: MyString
+  photo_public: MyString
+  created_at: MyString
+  modified_at: MyString
+  version: MyString
