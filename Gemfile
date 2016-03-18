@@ -12,6 +12,8 @@ gem 'sqlite3'
 
 gem 'cucumber'
 
+gem 'active_model_serializers'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
