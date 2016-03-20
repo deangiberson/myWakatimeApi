@@ -1,4 +1,5 @@
 class ApiKey < ActiveRecord::Base
+  belongs_to :user
   # http://railscasts.com/episodes/352-securing-an-api?autoplay=true
   before_create :generate_access_token
 

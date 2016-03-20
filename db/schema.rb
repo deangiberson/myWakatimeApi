@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317062927) do
+ActiveRecord::Schema.define(version: 20160319212243) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
+
+  add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "user_id"

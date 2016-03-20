@@ -2,16 +2,30 @@ class UsersController < ApplicationController
   before_filter :restrict_access
 
   def show
-    render json: @user
+    @user = User.find_by(username: params[:user])
+    if same_user?
+      render_user
+    else
+      head :unauthorized
+    end
   end
 
   def current
-    render json: @user
+    @user = @api_key.user
+    render_user
   end
 
   def restrict_access
     authenticate_or_request_with_http_token do |token, options|
-      @user = User.find_by(user_id: token)
+      @api_key = ApiKey.find_by(access_token: token)
     end
+  end
+
+  def same_user?
+    @user == @api_key.user
+  end
+
+  def render_user
+    render json: {data: @user}
   end
 end
