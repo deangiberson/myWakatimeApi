@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  logged_time_public: false
+  languages_used_public: false
+  email_public: false
+  photo_public: false
+
+two:
+  logged_time_public: false
+  languages_used_public: false
+  email_public: false
+  photo_public: false
