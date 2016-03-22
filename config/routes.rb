@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_agents, except: [:new, :edit]
   get 'users/current' => 'users#current'
   get 'users/:user' => 'users#show'
 
