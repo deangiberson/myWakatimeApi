@@ -7,8 +7,6 @@ class CreateUserAgents < ActiveRecord::Migration
       t.string :version
       t.string :os
       t.datetime :last_seen
-
-      t.timestamps null: false
     end
   end
 end

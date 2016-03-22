@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320041950) do
+ActiveRecord::Schema.define(version: 20160322224252) do
 
   create_table "api_keys", force: :cascade do |t|
-    t.string   "access_token"
+    t.string   "access_token", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
@@ -23,13 +23,22 @@ ActiveRecord::Schema.define(version: 20160320041950) do
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
 
   create_table "profiles", force: :cascade do |t|
-    t.boolean  "logged_time_public"
-    t.boolean  "languages_used_public"
-    t.boolean  "email_public"
-    t.boolean  "photo_public"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.boolean "logged_time_public"
+    t.boolean "languages_used_public"
+    t.boolean "email_public"
+    t.boolean "photo_public"
   end
+
+  create_table "user_agents", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "user_agent"
+    t.string   "editor"
+    t.string   "version"
+    t.string   "os"
+    t.datetime "last_seen"
+  end
+
+  add_index "user_agents", ["user_id"], name: "index_user_agents_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "user_id"
