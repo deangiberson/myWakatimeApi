@@ -1,3 +1,4 @@
+@api
 Feature: Users
   Through the api:
     Logged in users access there own account information
@@ -8,11 +9,13 @@ Feature: Users
     Not logged in users can not access other peoples non-public account information
 
   Scenario: Get current user
-    Given that the user test is logged in
+    Given that the user testpublic is logged in
     When I visit "/user/current"
     Then I should receive a valid user object
-    And the user.name should equal test
+    And the user.username should equal testpublic
 
   Scenario: Get specific user
-    Given that the user test is logged in
-    When I visit "/user/"
+    Given that the user testpublic is logged in
+    When I visit "/user/testprivate"
+    Then I should receive a valid user object
+    And the user.username should equal testprivate
