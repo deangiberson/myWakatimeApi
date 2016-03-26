@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  project: MyString
+  time: 9.99
+  duration: 1
+  branch: MyString
+
+two:
+  user_id: 
+  project: MyString
+  time: 9.99
+  duration: 1
+  branch: MyString
