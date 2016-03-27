@@ -16,3 +16,8 @@ in your favourite text editor.
 	gem install rails-api
 	rails-api new my_api
 	bundle exec rake middleware
+
+## Records on DynamoDB
+
+ - https://github.com/OceanDev/ocean-dynamo
+ - https://www.ruby-toolbox.com/categories/Amazon_DynamoDB
