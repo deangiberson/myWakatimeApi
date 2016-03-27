@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/current' => 'users#current'
-  
   resources :users do
-    member do
-      get 'current'
-    end
     resources :durations, except: [:new, :edit]
     resources :create_heartbeats, except: [:new, :edit]
     resources :user_agents, except: [:new, :edit]
