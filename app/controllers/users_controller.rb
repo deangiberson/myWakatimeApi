@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :restrict_access
 
   def show
-    @user = User.find_by(username: params[:user])
+    @user = User.find_by(username: params[:id])
     if same_user?
       render_user
     else

@@ -14,21 +14,24 @@ profiles = Profile.create([{logged_time_public: false,
                             email_public: true,
                             photo_public: true}])
 
-users = User.create([{username: 'deangiberson',
+users = User.create([{user_id: 'f912b2e9f764ac031f137f6ecf84ebca',
+                      username: 'deangiberson',
                       email: 'dean@deangiberson.com',
                       timezone: 'America/Vancouver',
                       plan: 0,
                       profile: profiles.first,
                       created_at: "2016-03-17 06:22:42",
                       updated_at: "2016-03-17 06:22:42"},
-                     {username: 'testpublic',
+                     {user_id: '88144fc51182cfa77a6ddae039dab97a',
+                      username: 'testpublic',
                       email: 'test@deangiberson.com',
                       timezone: 'America/Vancouver',
                       plan: 0,
                       profile: profiles.last,
                       created_at: "2016-03-17 06:22:42",
                       updated_at: "2016-03-17 06:22:42"},
-                     {username: 'testpublic',
+                     {user_id: 'a3ae63b5b8dfffe8a18680b467d5d1da',
+                      username: 'testpublic',
                       email: 'test@deangiberson.com',
                       timezone: 'America/Vancouver',
                       plan: 0,
@@ -49,8 +52,10 @@ apikeys = ApiKey.create([{user: users[0],
                           updated_at: "2016-03-17 06:22:42"}])
 
 # Forcing these accoutns to have fixed api keys to ease testing
-apikeys[0].access_token = "f912b2e9f764ac031f137f6ecf84ebca"
-apikeys[1].access_token = "88144fc51182cfa77a6ddae039dab97a"
-apikeys[2].access_token = "a3ae63b5b8dfffe8a18680b467d5d1da"
+apikeys[0].update_attribute("access_token", "f912b2e9f764ac031f137f6ecf84ebca")
+apikeys[1].update_attribute("access_token", "88144fc51182cfa77a6ddae039dab97a")
+apikeys[2].update_attribute("access_token", "a3ae63b5b8dfffe8a18680b467d5d1da")
+
+# apikeys.each |a| a.save!
 
 p apikeys

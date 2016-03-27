@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  resources :durations, except: [:new, :edit]
-  resources :create_heartbeats, except: [:new, :edit]
-  resources :user_agents, except: [:new, :edit]
   get 'users/current' => 'users#current'
-  get 'users/:user' => 'users#show'
+  
+  resources :users do
+    member do
+      get 'current'
+    end
+    resources :durations, except: [:new, :edit]
+    resources :create_heartbeats, except: [:new, :edit]
+    resources :user_agents, except: [:new, :edit]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
