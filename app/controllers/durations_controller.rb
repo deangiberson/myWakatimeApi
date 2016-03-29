@@ -1,12 +1,16 @@
 class DurationsController < ApplicationController
-  before_action :set_duration, only: [:show, :update, :destroy]
+  # before_action :set_duration, only: [:show, :update, :destroy]
 
   # GET /durations
   # GET /durations.json
   def index
-    @durations = Duration.all
-
-    render json: @durations
+    get_user
+    if has_access?
+      @durations = Duration.find_by(user: @user)
+      render json: @durations
+    else
+      head :unauthorized
+    end
   end
 
   # GET /durations/1

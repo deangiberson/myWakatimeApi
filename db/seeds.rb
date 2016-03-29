@@ -59,3 +59,25 @@ apikeys[2].update_attribute("access_token", "a3ae63b5b8dfffe8a18680b467d5d1da")
 # apikeys.each |a| a.save!
 
 p apikeys
+
+durations = Duration.create([{user: users[0],
+                              project: 'project',
+                              time: '1459226847',
+                              duration: 10,
+                              branch: 'branch1',
+                              created_at: "2016-03-17 06:22:42",
+                              updated_at: "2016-03-17 06:22:42"},
+                             {user: users[0],
+                              project: 'project2',
+                              time: '1459226847',
+                              duration: 10,
+                              branch: 'branch2',
+                              created_at: "2016-03-17 06:22:42",
+                              updated_at: "2016-03-17 06:22:42"},
+                             {user: users[1],
+                              project: 'project',
+                              time: '1459226847',
+                              duration: 10,
+                              branch: 'branch1',
+                              created_at: "2016-03-17 06:22:42",
+                              updated_at: "2016-03-17 06:22:42"}])
