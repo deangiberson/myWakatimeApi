@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326055553) do
+ActiveRecord::Schema.define(version: 20160330041141) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token", null: false
@@ -21,26 +21,6 @@ ActiveRecord::Schema.define(version: 20160326055553) do
   end
 
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
-
-  create_table "create_heartbeats", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "entity"
-    t.string   "type"
-    t.decimal  "time"
-    t.string   "project"
-    t.string   "branch"
-    t.string   "language"
-    t.string   "dependencies"
-    t.integer  "lines"
-    t.integer  "lineno"
-    t.integer  "cursorpos"
-    t.boolean  "is_write"
-    t.boolean  "is_debugging"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "create_heartbeats", ["user_id"], name: "index_create_heartbeats_on_user_id"
 
   create_table "durations", force: :cascade do |t|
     t.integer  "user_id"
