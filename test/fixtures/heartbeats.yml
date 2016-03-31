@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  entity: MyString
+  type: 
+  time: 9.99
+  project: MyString
+  branch: MyString
+  language: MyString
+  dependencies: MyString
+  lines: 1
+  lineno: 1
+  cursorpos: 1
+  is_write: false
+  is_debugging: false
+
+two:
+  user_id: 
+  entity: MyString
+  type: 
+  time: 9.99
+  project: MyString
+  branch: MyString
+  language: MyString
+  dependencies: MyString
+  lines: 1
+  lineno: 1
+  cursorpos: 1
+  is_write: false
+  is_debugging: false

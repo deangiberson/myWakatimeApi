@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :heartbeats, except: [:new, :edit]
   resources :users do
     resources :durations, except: [:new, :edit]
     resources :create_heartbeats, except: [:new, :edit]
