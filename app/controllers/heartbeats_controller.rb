@@ -1,12 +1,16 @@
 class HeartbeatsController < ApplicationController
-  before_action :set_heartbeat, only: [:show, :update, :destroy]
+  #before_action :set_heartbeat, only: [:show, :update, :destroy]
 
   # GET /heartbeats
   # GET /heartbeats.json
   def index
-    @heartbeats = Heartbeat.all
-
-    render json: @heartbeats
+    get_user
+    if has_access?
+      @heartbeats = Heartbeat.find_by(user: @user)
+      render json: @heartbeats
+    else
+      head :unauthorized
+    end
   end
 
   # GET /heartbeats/1
@@ -54,6 +58,6 @@ class HeartbeatsController < ApplicationController
     end
 
     def heartbeat_params
-      params.require(:heartbeat).permit(:user_id, :entity, :type, :time, :project, :branch, :language, :dependencies, :lines, :lineno, :cursorpos, :is_write, :is_debugging)
+      params.require(:heartbeat).permit(:user_id, :entity, :entity_type, :time, :project, :branch, :language, :dependencies, :lines, :lineno, :cursorpos, :is_write, :is_debugging)
     end
 end

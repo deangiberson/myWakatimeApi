@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :heartbeats, except: [:new, :edit]
   resources :users do
     resources :durations, except: [:new, :edit]
     resources :create_heartbeats, except: [:new, :edit]
     resources :user_agents, except: [:new, :edit]
+    resources :heartbeats, except: [:new, :edit]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
