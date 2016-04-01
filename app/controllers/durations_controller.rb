@@ -9,7 +9,7 @@ class DurationsController < ApplicationController
       @durations = Duration.find_by(user: @user)
       render json: @durations
     else
-      head :unauthorized
+      forbidden
     end
   end
 

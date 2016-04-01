@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if has_access?
       render_user
     else
-      head :unauthorized
+      forbidden
     end
   end
 

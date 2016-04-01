@@ -26,4 +26,8 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def forbidden
+    render json: {error: "Forbidden"}
+  end
+
 end

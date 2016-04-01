@@ -9,7 +9,7 @@ class HeartbeatsController < ApplicationController
       @heartbeats = Heartbeat.find_by(user: @user)
       render json: @heartbeats
     else
-      head :unauthorized
+      forbidden
     end
   end
 
