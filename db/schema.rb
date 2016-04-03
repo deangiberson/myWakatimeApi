@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331011901) do
+ActiveRecord::Schema.define(version: 20160403055413) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token", null: false
@@ -54,12 +54,41 @@ ActiveRecord::Schema.define(version: 20160331011901) do
 
   add_index "heartbeats", ["user_id"], name: "index_heartbeats_on_user_id"
 
+  create_table "languages", force: :cascade do |t|
+    t.integer  "running_total_id"
+    t.string   "name"
+    t.integer  "total_seconds"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "languages", ["running_total_id"], name: "index_languages_on_running_total_id"
+
+  create_table "leaders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "leaders", ["user_id"], name: "index_leaders_on_user_id"
+
   create_table "profiles", force: :cascade do |t|
     t.boolean "logged_time_public"
     t.boolean "languages_used_public"
     t.boolean "email_public"
     t.boolean "photo_public"
   end
+
+  create_table "running_totals", force: :cascade do |t|
+    t.integer  "leader_id"
+    t.integer  "total_seconds"
+    t.integer  "daily_average"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "running_totals", ["leader_id"], name: "index_running_totals_on_leader_id"
 
   create_table "user_agents", force: :cascade do |t|
     t.integer  "user_id"
