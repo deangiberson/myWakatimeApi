@@ -5,8 +5,9 @@ class LeadersController < ApplicationController
   # GET /leaders.json
   def index
     @leaders = Leader.all
+    #running_totals = @leaders.each |l| l.running_total
 
-    render json: @leaders
+    render json: @leaders.each {|l| { rank: l.rank, running_total: l.running_total, user: l.user}}
   end
 
   # GET /leaders/1

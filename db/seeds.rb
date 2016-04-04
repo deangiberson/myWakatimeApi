@@ -97,3 +97,21 @@ heartbeats = Heartbeat.create([{user: users[0],
                                 is_debugging: false,
                                 created_at: "2016-03-17 06:22:42",
                                 updated_at: "2016-03-17 06:22:42"}])
+
+leaders = Leader.create([{user: users[0],
+                          rank: 1},
+                         {user: users[1],
+                          rank: 2},
+                         {user: users[2],
+                          rank: 3}])
+
+running_totals = RunningTotal.create([{leader: leaders[0],
+                                       total_seconds: 10,
+                                       daily_average: 10},
+                                      {leader: leaders[1],
+                                       total_seconds: 9,
+                                       daily_average: 9},
+                                      {leader: leaders[2],
+                                       total_seconds: 8,
+                                       daily_average: 8}])
+
