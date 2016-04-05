@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  range: MyString
+  holidays: 1
+  status: MyString
+  is_already_updating: false
+  is_stuck: false
+  is_up_to_date: false
+  start: 1
+  end: 1
+  timezone: MyString
+  timeout: 1
+  writes_only: false
+  total_seconds: 1
+  daily_average: 1
+
+two:
+  user_id: 
+  range: MyString
+  holidays: 1
+  status: MyString
+  is_already_updating: false
+  is_stuck: false
+  is_up_to_date: false
+  start: 1
+  end: 1
+  timezone: MyString
+  timeout: 1
+  writes_only: false
+  total_seconds: 1
+  daily_average: 1

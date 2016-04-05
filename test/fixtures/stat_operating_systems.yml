@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stat_id: 
+  name: MyString
+  total_seconds: 1
+  percent: 1.5
+
+two:
+  stat_id: 
+  name: MyString
+  total_seconds: 1
+  percent: 1.5
