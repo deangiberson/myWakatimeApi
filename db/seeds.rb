@@ -115,3 +115,49 @@ running_totals = RunningTotal.create([{leader: leaders[0],
                                        total_seconds: 8,
                                        daily_average: 8}])
 
+stats = Stat.create([{user: users[0],
+                      range: "last_7_days",
+                      holidays: 0,
+                      status: "status",
+                      is_already_updating: false,
+                      is_stuck: false,
+                      is_up_to_date: true,
+                      start: "1459468800",
+                      end: "1459920550",
+                      timezone: "America/Vancouver",
+                      timeout: "0",
+                      writes_only: false,
+                      total_seconds: 700,
+                      daily_average: 100}])
+
+stats_best_days = StatBestDay.create([{stat: stats[0],
+                                       date: "2016-04-01",
+                                       total_seconds: 200}])
+
+stat_editors = StatEditor.create([{stat: stats[0],
+                                   name: "emacs",
+                                   total_seconds: 500,
+                                   percent: 71.4},
+                                  {stat: stats[0],
+                                   name: "notepad",
+                                   total_seconds: 200,
+                                   percent: 28.6}])
+
+stat_languages = StatLanguages.create([{stat: stats[0],
+                                        name: "java",
+                                        total_seconds: 350,
+                                        percent: 50.0},
+                                       {stat: stats[0],
+                                        name: "python",
+                                        total_seconds: 350,
+                                        percent: 50.0}])
+
+stat_operating_systems = StatOperatingSystem.create([{stat: stats[0],
+                                                       name: "linux",
+                                                       total_seconds: 700,
+                                                       percent: 100.0}])
+
+stat_projects = StatProject.create([{stat: stats[0],
+                                     name: "project",
+                                     total_seconds: 700,
+                                     percent: 100.0}])

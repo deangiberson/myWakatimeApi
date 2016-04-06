@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403055413) do
+ActiveRecord::Schema.define(version: 20160405052058) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token", null: false
@@ -89,6 +89,81 @@ ActiveRecord::Schema.define(version: 20160403055413) do
   end
 
   add_index "running_totals", ["leader_id"], name: "index_running_totals_on_leader_id"
+
+  create_table "stat_best_days", force: :cascade do |t|
+    t.integer  "stat_id"
+    t.string   "date"
+    t.integer  "total_seconds"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "stat_best_days", ["stat_id"], name: "index_stat_best_days_on_stat_id"
+
+  create_table "stat_editors", force: :cascade do |t|
+    t.integer  "stat_id"
+    t.string   "name"
+    t.integer  "total_seconds"
+    t.float    "percent"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "stat_editors", ["stat_id"], name: "index_stat_editors_on_stat_id"
+
+  create_table "stat_languages", force: :cascade do |t|
+    t.integer  "stat_id"
+    t.string   "name"
+    t.integer  "total_seconds"
+    t.float    "percent"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "stat_languages", ["stat_id"], name: "index_stat_languages_on_stat_id"
+
+  create_table "stat_operating_systems", force: :cascade do |t|
+    t.integer  "stat_id"
+    t.string   "name"
+    t.integer  "total_seconds"
+    t.float    "percent"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "stat_operating_systems", ["stat_id"], name: "index_stat_operating_systems_on_stat_id"
+
+  create_table "stat_projects", force: :cascade do |t|
+    t.integer  "stat_id"
+    t.string   "name"
+    t.integer  "total_seconds"
+    t.float    "percent"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "stat_projects", ["stat_id"], name: "index_stat_projects_on_stat_id"
+
+  create_table "stats", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "range"
+    t.integer  "holidays"
+    t.string   "status"
+    t.boolean  "is_already_updating"
+    t.boolean  "is_stuck"
+    t.boolean  "is_up_to_date"
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "timezone"
+    t.integer  "timeout"
+    t.boolean  "writes_only"
+    t.integer  "total_seconds"
+    t.integer  "daily_average"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "stats", ["user_id"], name: "index_stats_on_user_id"
 
   create_table "user_agents", force: :cascade do |t|
     t.integer  "user_id"
