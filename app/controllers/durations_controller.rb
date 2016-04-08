@@ -6,8 +6,20 @@ class DurationsController < ApplicationController
   def index
     get_user
     if has_access?
-      @durations = Duration.find_by(user: @user)
-      render json: @durations
+      @durations = Duration.where(user: @user)
+
+      times = @durations.map {|d| d.created_at}
+      # render json: @durations
+      render json: {
+        data: @durations.map {|d|
+                     {
+                       project: d.project,
+                       time: d.time,
+                       duration: d.duration
+                     }},
+        branches: @durations.map {|d| d.branch},
+        start: times.first,
+        end: times.last}
     else
       forbidden
     end
