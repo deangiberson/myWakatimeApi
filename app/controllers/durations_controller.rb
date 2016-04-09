@@ -5,24 +5,42 @@ class DurationsController < ApplicationController
   # GET /durations.json
   def index
     get_user
-    if has_access?
-      @durations = Duration.where(user: @user)
-
-      times = @durations.map {|d| d.created_at}
-      # render json: @durations
-      render json: {
-        data: @durations.map {|d|
-                     {
-                       project: d.project,
-                       time: d.time,
-                       duration: d.duration
-                     }},
-        branches: @durations.map {|d| d.branch},
-        start: times.first,
-        end: times.last}
-    else
+    if !has_access?
       forbidden
+      return
     end
+    
+    date = params[:date]
+      
+    if !date
+      render_missing_date
+      return
+    end
+    
+    begin
+      date = Date.parse(date)
+    rescue ArgumentError => error
+      render_invalid_date
+      return
+    end
+    
+    dayStart = date.to_time.to_i
+    dayEnd = (date + 1).to_time.to_i
+          
+    @durations = Duration.where('user_id = ? AND time >= ? AND time < ?', @user.id, dayStart, dayEnd)
+      
+    times = @durations.map {|d| d.created_at}
+    # render json: @durations
+    render json: {
+             data: @durations.map {|d|
+               {
+                 project: d.project,
+                 time: d.time,
+                 duration: d.duration
+               }},
+             branches: @durations.map {|d| d.branch},
+             start: times.first,
+             end: times.last}
   end
 
   # GET /durations/1
@@ -72,4 +90,13 @@ class DurationsController < ApplicationController
     def duration_params
       params.require(:duration).permit(:user_id, :project, :time, :duration, :branch)
     end
+
+    def render_missing_date
+      render json: {error: "Missing date."}
+    end
+
+    def render_invalid_date
+      render json: {error: "Invalid date."}
+    end
+    
 end
