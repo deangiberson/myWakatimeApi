@@ -22,7 +22,12 @@ class ApplicationController < ActionController::API
     if params[:id] == 'current'
       @user = @api_key.user
     else
-      @user = User.find_by(username: params[:user_id] || params[:id])
+      username = params[:user_id] || params[:id]
+
+      if /@[-0-9a-zA-Z]+/.match username
+        username.sub!(/^@/, '')
+        @user = User.find_by(username: username)
+      end
     end
   end
 
