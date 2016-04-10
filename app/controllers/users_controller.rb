@@ -2,7 +2,10 @@ class UsersController < ApplicationController
 
   def show
     get_user
-    if has_access?
+
+    if !@user
+      render_not_found
+    elsif has_access?
       render_user
     else
       forbidden
@@ -28,5 +31,11 @@ class UsersController < ApplicationController
                      created_at: @user.created_at,
                      modified_at: @user.updated_at
                     }}
+  end
+
+  def render_not_found
+    render json: {
+             error: "Not found"
+           }
   end
 end
