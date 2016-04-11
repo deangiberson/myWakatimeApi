@@ -23,10 +23,9 @@ Feature: Users
   Scenario: Get non-existing user
     Given that the user @testpublic is logged in
     When I visit "/user/@nothere"
-    Then I should receive the json "{\n  \"error\": \"Not found\"\n}"
+    Then I should a json error with "Not found" as the body
 
   Scenario: Get user without having privileges
     Given that the user @testpublic is logged in
     When I visit "/user/@testprivate"
-    Then I should receive the json "{\n  \"error\": \"Forbidden\"\n}"
-
+    Then I should a json error with "Forbidden" as the body
