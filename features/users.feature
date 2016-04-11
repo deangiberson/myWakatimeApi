@@ -9,23 +9,23 @@ Feature: Users
     Not logged in users can not access other peoples non-public account information
 
   Scenario: Get current user
-    Given that the user @testpublic is logged in
+    Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
     When I visit "/user/current"
     Then I should receive a valid user object
-    And the user.username should equal testpublic
+    And the user "username" should equal "testpublic"
 
   Scenario: Get specific user
-    Given that the user @testpublic is logged in
+    Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
     When I visit "/user/@testprivate"
     Then I should receive a valid user object
-    And the user.username should equal testprivate
+    And the user "username" should equal "testprivate"
 
   Scenario: Get non-existing user
-    Given that the user @testpublic is logged in
+    Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
     When I visit "/user/@nothere"
-    Then I should a json error with "Not found" as the body
+    Then I should receive a json error with "Not found" as the body
 
   Scenario: Get user without having privileges
-    Given that the user @testpublic is logged in
+    Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
     When I visit "/user/@testprivate"
-    Then I should a json error with "Forbidden" as the body
+    Then I should receive a json error with "Forbidden" as the body

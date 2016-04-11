@@ -10,7 +10,12 @@ gem 'spring', :group => :development
 
 gem 'sqlite3'
 
-gem 'cucumber'
+group :development, :test do
+  gem 'cucumber'
+  gem 'capybara'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+end
 
 gem 'active_model_serializers'
 

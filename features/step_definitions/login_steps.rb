@@ -1,8 +1,9 @@
-Given /^that the user (\d+) is logged in/ do |username|
-  
+Given(/^that the user "([^"]*)" is logged in$/) do |username|
+  @username = username
 end
 
-When /^I visit "(\d+)"/  do |path|
-  visit
+Given(/^that the user "([^"]*)" is using api key "([^"]*)"$/) do |username, apikey|
+  @username = username
+  @apikey = apikey
 end
 
