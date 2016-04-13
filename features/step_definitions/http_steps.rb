@@ -15,5 +15,5 @@ Given(/^I send and accept JSON$/) do
 end
 
 Then(/^I should get a response of (\d+)$/) do |status|
-  last_response.status.should == status
+  last_response.status.should == status.to_i
 end
