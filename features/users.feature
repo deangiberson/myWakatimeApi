@@ -10,22 +10,30 @@ Feature: Users
 
   Scenario: Get current user
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
-    When I visit "/users/current"
-    Then I should receive a valid user object
+    And I send and accept JSON
+    When I GET "/users/current"
+    Then I should get a response of 200
+    And I should receive a valid user object
     And the user "username" should equal "testpublic"
 
   Scenario: Get specific user
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
-    When I visit "/users/@testprivate"
-    Then I should receive a valid user object
+    And I send and accept JSON
+    When I GET "/users/@testprivate"
+    Then I should get a response of 200
+    And I should receive a valid user object
     And the user "username" should equal "testprivate"
 
   Scenario: Get non-existing user
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
-    When I visit "/users/@nothere"
-    Then I should receive a json error with "Not found" as the body
+    And I send and accept JSON
+    When I GET "/users/@nothere"
+    Then I should get a response of 200
+    And I should receive a json error with "Not found" as the body
 
   Scenario: Get user without having privileges
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
-    When I visit "/users/@testprivate"
-    Then I should receive a json error with "Forbidden" as the body
+    And I send and accept JSON
+    When I GET "/users/@testprivate"
+    Then I should get a response of 200
+    And I should receive a json error with "Forbidden" as the body

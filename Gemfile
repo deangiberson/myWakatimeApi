@@ -12,9 +12,9 @@ gem 'sqlite3'
 
 group :development, :test do
   gem 'cucumber'
-  gem 'capybara'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+  gem 'rspec'
 end
 
 gem 'active_model_serializers'
