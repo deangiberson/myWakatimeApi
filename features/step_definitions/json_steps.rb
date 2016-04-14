@@ -1,11 +1,16 @@
+World(Rack::Test::Methods)
+
 Then(/^I should receive a valid user object$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  result = JSON.parse(last_response.body)
+  result['data'].should_not == nil
 end
 
-Then(/^the user "([^"]*)" should equal "([^"]*)"$/) do |arg1, arg2|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^the user "([^"]*)" should equal "([^"]*)"$/) do |field, value|
+  result = JSON.parse(last_response.body)
+  result['data'][field].should == value
 end
 
-Then(/^I should receive a json error with "([^"]*)" as the body$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should receive a json error with "([^"]*)" as the body$/) do |value|
+  result = JSON.parse(last_response.body)
+  result['error'].should == value
 end

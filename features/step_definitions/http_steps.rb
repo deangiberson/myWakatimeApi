@@ -1,6 +1,8 @@
 World(Rack::Test::Methods)
 
 Given(/^that the user "([^"]*)" is using api key "([^"]*)"$/) do |username, apikey|
+  @username = username
+  @apikey = apikey
   header 'Authorization', 'Token token='+apikey
 end
 

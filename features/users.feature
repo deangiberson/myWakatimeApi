@@ -21,8 +21,7 @@ Feature: Users
     And I send and accept JSON
     When I GET "/users/@testprivate"
     Then I should get a response of 200
-    And I should receive a valid user object
-    And the user "username" should equal "testprivate"
+    And I should receive a json error with "Forbidden" as the body
 
   Scenario: Get non-existing user
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
