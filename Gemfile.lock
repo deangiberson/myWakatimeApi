@@ -74,6 +74,9 @@ GEM
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     json (1.8.3)
+    json_spec (1.1.4)
+      multi_json (~> 1.0)
+      rspec (>= 2.0, < 4.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -159,6 +162,7 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  json_spec
   rails (= 4.2.6)
   rails-api
   rspec
