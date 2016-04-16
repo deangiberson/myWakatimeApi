@@ -5,30 +5,36 @@ class DurationsController < ApplicationController
   # GET /durations.json
   def index
     get_user
-    if !has_access?
+
+    if !@user
+      render_not_found
+    elsif !has_access?
       forbidden
-      return
+    else
+      render_duration
     end
-    
-    date = params[:date]
-      
-    if !date
+  end
+
+  def render_duration
+    @date = params[:date]
+
+    if !@date
       render_missing_date
       return
     end
-    
+
     begin
-      date = Date.parse(date)
+      date = Date.parse(@date)
     rescue ArgumentError => error
       render_invalid_date
       return
     end
-    
+
     dayStart = date.to_time.to_i
     dayEnd = (date + 1).to_time.to_i
-          
+
     @durations = Duration.where('user_id = ? AND time >= ? AND time < ?', @user.id, dayStart, dayEnd)
-      
+
     times = @durations.map {|d| d.created_at}
     # render json: @durations
     render json: {
@@ -98,5 +104,5 @@ class DurationsController < ApplicationController
     def render_invalid_date
       render json: {error: "Invalid date."}
     end
-    
+
 end

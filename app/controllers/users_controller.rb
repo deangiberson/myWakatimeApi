@@ -33,9 +33,4 @@ class UsersController < ApplicationController
                     }}
   end
 
-  def render_not_found
-    render json: {
-             error: "Not found"
-           }
-  end
 end

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
   before_filter :restrict_access
-  
+
   def restrict_access
     authenticate_or_request_with_http_token do |token, options|
       @api_key = ApiKey.find_by(access_token: token)
@@ -19,11 +19,11 @@ class ApplicationController < ActionController::API
   end
 
   def get_user
-    if params[:id] == 'current'
+    username = params[:user_id] || params[:id]
+
+    if username == 'current'
       @user = @api_key.user
     else
-      username = params[:user_id] || params[:id]
-
       if /@[-0-9a-zA-Z]+/.match username
         username.sub!(/^@/, '')
         @user = User.find_by(username: username)
@@ -31,8 +31,16 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def render_not_found
+    render json: {
+             error: "Not found"
+           }
+  end
+
   def forbidden
-    render json: {error: "Forbidden"}
+    render json: {
+             error: "Forbidden"
+           }
   end
 
 end

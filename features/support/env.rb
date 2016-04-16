@@ -58,3 +58,7 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 require 'rspec/expectations'
 require 'json_spec/cucumber'
+
+def last_json
+  last_response.body
+end
