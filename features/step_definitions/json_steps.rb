@@ -16,7 +16,7 @@ Then(/^the user "([^"]*)" should equal "([^"]*)"$/) do |field, value|
   result['data'][field].should == value
 end
 
-Then(/^I should receive a json error with "([^"]*)" as the body$/) do |value|
+Then(/^I should receive a JSON error with "([^"]*)" as the body$/) do |value|
   result = JSON.parse(last_response.body)
   result['error'].should == value
 end
