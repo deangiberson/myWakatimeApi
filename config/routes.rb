@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :stats, except: [:new, :edit]
+  get '/users/:user/stats/(:range)' => 'stats#index'
+
   resources :leaders, except: [:new, :edit]
   resources :users do
     resources :durations, except: [:new, :edit]
