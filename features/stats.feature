@@ -8,10 +8,10 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
-    | data/timeout                 |    15 |
+    | data/0/days_including_holidays |       7 |
+    | data/0/days_minus_holidays     |       7 |
+    | data/0/editors/0/name          | "emacs" |
+    | data/0/timeout                 |       0 |
 
   Scenario: Get current user stats with timeout of 8
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
@@ -20,10 +20,10 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
-    | data/timeout                 |     8 |
+    | data/0/days_including_holidays |     7 |
+    | data/0/days_minus_holidays     |     4 |
+    | data/0/editors/0/name          | Emacs |
+    | data/0/timeout                 |     8 |
 
   Scenario: Get current user stats
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
@@ -32,10 +32,10 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
-    | data/timeout                 |    15 |
+    | data/0/days_including_holidays |     7 |
+    | data/0/days_minus_holidays     |     4 |
+    | data/0/editors/0/name          | Emacs |
+    | data/0/timeout                 |    15 |
 
   Scenario: Get current user stats for last 7 days
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
@@ -44,9 +44,9 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
+    | data/0/days_including_holidays |     7 |
+    | data/0/days_minus_holidays     |     4 |
+    | data/0/editors/0/name          | Emacs |
 
   Scenario: Get current user stats for last 30 days
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
@@ -55,9 +55,9 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
+    | data/0/days_including_holidays |     7 |
+    | data/0/days_minus_holidays     |     4 |
+    | data/0/editors/0/name          | Emacs |
 
   Scenario: Get current user stats for last 6 months
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
@@ -66,9 +66,9 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
+    | data/0/days_including_holidays |     7 |
+    | data/0/days_minus_holidays     |     4 |
+    | data/0/editors/0/name          | Emacs |
 
   Scenario: Get current user stats for last year
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
@@ -77,9 +77,9 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
+    | data/0/days_including_holidays |     7 |
+    | data/0/days_minus_holidays     |     4 |
+    | data/0/editors/0/name          | Emacs |
 
   Scenario: Get current user stats for all time
     Given that the user "testpublic" is using api key "88144fc51182cfa77a6ddae039dab97a"
@@ -88,6 +88,6 @@ Feature: Stats
     Then I should get a response of 200
     And I should receive a valid stats object
     And the JSON should have the following:
-    | data/days_including_holidays |     7 |
-    | data/days_minus_holidays     |     4 |
-    | data/editors/0/name          | Emacs |
+    | data/0/days_including_holidays |     7 |
+    | data/0/days_minus_holidays     |     4 |
+    | data/0/editors/0/name          | Emacs |
