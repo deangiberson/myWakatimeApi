@@ -12,6 +12,8 @@ class StatsController < ApplicationController
                     {
                       total_seconds: stat.total_seconds,
                       human_readable_total: humanize(stat.total_seconds),
+                      daily_average: stat.daily_average,
+                      human_readable_daily_average: humanize(stat.daily_average),
                       range: stat.range,
                       holidays: stat.holidays,
                       days_including_holidays: days,
