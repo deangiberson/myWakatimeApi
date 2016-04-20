@@ -11,6 +11,7 @@ class StatsController < ApplicationController
                     days = range_to_days(stat)
                     {
                       total_seconds: stat.total_seconds,
+                      human_readable_total: humanize(stat.total_seconds),
                       range: stat.range,
                       holidays: stat.holidays,
                       days_including_holidays: days,
@@ -92,5 +93,16 @@ class StatsController < ApplicationController
       else
         ((Time.at(stat.end) - Time.at(stat.start)) / 1.day).to_i
       end
+    end
+
+    # https://gist.github.com/csanz/669588
+    def humanize secs
+      [[60, :seconds], [60, :minutes], [24, :hours], [1000, :days]].inject([]){ |s, (count, name)|
+        if secs > 0
+          secs, n = secs.divmod(count)
+          s.unshift "#{n.to_i} #{name}"
+        end
+        s
+      }.join(' ')
     end
 end
